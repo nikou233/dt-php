@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>题目管理</title>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+<style>
+   .table tbody tr td{
+      vertical-align: middle;
+   }
+</style>
+<body>
+    <table class="table">
+        <!-- <caption>基本的表格布局</caption> -->
+       <thead>
+          <tr>
+             <th>编号</th>
+             <th>题目</th>
+             <th>答案</th>
+             <th>科目</th>
+             <th>操作1</th>
+             <th>操作2</th>
+          </tr>
+       </thead>
+       <tbody>
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            // 输出数据
+            while($row = mysqli_fetch_assoc($result)) {
+
+        ?>
+            
+           <tr>
+             <td> <?= $row["id"] ?> </td>
+             <td> <?= $row["question"] ?></td>
+             <td> <?= $row["answer"] ?> </td>
+             <td> <?= $row["topic_id"] ?></td>
+                <!-- <td> <a href="student_edit.php?id=<?= $row['id'] ?>">编辑</a></td>   -->
+                <td><a class="btn btn-primary btn-sm" href="tiankong_edit.php?id=<?= $row['id'] ?>" role="button">编辑</a></td>                  
+                <td><a class="btn btn btn-danger btn-sm" href="tiankong_del.php?id=<?= $row['id'] ?>" role="button">删除</a></td> 
+            </tr>
+          <?php
+            }
+        }
+          else {
+            echo "0 结果";
+        }
+          ?>
+       </tbody>
+    </table>
+    <div>
+            <a class="btn btn-primary btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page=1'; ?>" role="button">首页</a>             
+            <a class="btn btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$prepage; ?>" role="button">上一页</a> 
+            <a class="btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$nextpage; ?>" role="button">下一页</a>                  
+            <a class="btn btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$pages; ?>" role="button">尾页</a>
+    </div>
+    <script>
+        function del(){
+                      if(confirm("你确信要删除吗？"))
+                          {
+                             return true;
+                          }else
+                          {
+                            return false;
+                          }
+                        }
+        </script>
+</body>
+</html>

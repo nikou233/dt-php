@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>后台登录 - 内容管理系统</title>
+<!-- <link rel="stylesheet" href="../css/zhuye.css"> -->
+<!-- <link rel="stylesheet" href="../bootstrap-3.4.1-dist/css/bootstrap.min.css"> -->
+<style>
+
+.login-box{
+    padding-top: 1px;
+}
+    .login-box form table{
+		margin:auto;
+		margin-top: 10px;
+		font-size: 20px;
+	}
+	.login-box form table tr{
+		display: block;
+	    margin-top: 30px;
+		
+	}
+	.login-box form table tr:nth-last-child(2){
+		margin-left: 0px;
+	}
+	.login-box form table tr:nth-last-child(3){
+	    margin-top: 15px;
+		/* margin-left: 80px; */
+	}
+	.login-box form table tr:nth-last-child(1){
+		margin-left: 100px;
+	}
+	.bg{
+		background-image: url("./R-C.jfif");
+	}
+</style>
+</head>
+<body class="bg">
+		<div style="width:55%; background-color: rgb(105, 198, 235);margin: 0 auto;">
+			<div class="right">
+				<div class="row">
+					<div class="login-box">
+						<h1 align="center">注册</h1>
+						<form method="post" action="./zhuce.php">
+							<table>
+								<tr><th>用　　户：</th><td><input type="text" name="name"></td></tr>
+								<tr><th>密　　码：</th><td><input type="password" name="password"></td></tr>
+								<tr><th>确认密码：</th><td><input type="password" name="password2"></td></tr>
+								<tr><th>身份证　：</th><td><input type="texst" name="personcode"></td></tr>
+								<tr><th>权　　限：  </th> <td><label><input type="radio"value="1" name="limits" required>考生</label></td></tr>
+								<tr>
+								<tr class="zhuce">
+									<th></th><td><input type="submit"value=" 注册">
+									</td>
+									<th></th><td><a href="#"><input type="button"value="退出"></a></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html> 

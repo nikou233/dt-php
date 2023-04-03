@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生用户管理</title>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<style>
+  /* .l{
+    text-align: center;
+  } */
+</style>
+</head>
+<body>
+   <h2 style="text-align: center;">用户管理</h2>
+  <form id="form1" name="form1" method="post" action="user_select.php" style="margin:0px; padding:0px;">
+    <td width="31%" align="center">
+       <input type="text" name="name" id="name" />
+    </td>
+    <td width="33%">
+       <input type="submit" align="center"  id="button" value="查询" />
+    </td>
+ </form>
+    <table class="table">
+ 
+       <thead>
+          <tr>
+             <th>id</th>
+             <th>用户名</th>
+             <th>密码</th>
+             <th>权限</th>
+             <th>身份证号</th>
+             <th>照片</th>
+             <th>操作1</th>
+             <th>操作2</th>
+          </tr>
+       </thead>
+       <tbody>
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            // 输出数据
+            while($row = mysqli_fetch_assoc($result)) {
+
+        ?>
+            
+              <tr>
+                <td> <?= $row["id"] ?> </td>
+                <td> <?= $row["name"] ?></td>
+                <td> <?= $row["password"] ?> </td>
+                <td> <?= $row["limits"] ?> </td>
+                <td> <?= $row["personcode"] ?> </td>
+                <td><img src="<?= $row['photo'] ?>"width="40px" height="40px"></td>
+                <td><a class="btn btn-primary btn-sm" href="user_edit.php?id=<?= $row['id'] ?>" role="button">编辑</a></td>                  
+                <td><a class="btn btn btn-danger btn-sm" href="user_delete.php?id=<?= $row['id'] ?>" role="button">删除</a></td> 
+              </tr>
+              </tr>
+          <?php
+            }
+        }
+          else {
+            echo "0 结果";
+        }
+          ?>
+       </tbody>
+    </table>
+    <div>
+            <a class="btn btn-primary btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page=1'; ?>" role="button">首页</a>             
+            <a class="btn btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$prepage; ?>" role="button">上一页</a> 
+            <a class="btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$nextpage; ?>" role="button">下一页</a>                  
+            <a class="btn btn btn-default btn-sm" href="<?php echo $_SERVER['PHP_SELF'].'?page='.$pages; ?>" role="button">尾页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台用户管理</title>
+</head>
+<style>
+	select{
+		height: 22px;
+		width: 176px;
+	}
+	/* input{
+		height: 20px;
+		width: 175px;
+	}
+	 */
+</style>
+<body>
+
+					<div>
+						<form method="post" action="xuanze_update.php">
+							<table>
+								<tr><td><input type="hidden" name="id" value=<?=$row['id'] ?>></td></tr>
+								<!-- <tr><th>题目编号</th><td><input type="text" name="topic_id" value=<?=$row['topic_id'] ?>></td></tr> -->
+								<tr><th>题目编号:</th><td><select name="topic_id" id="" >
+									<option>10001</option>
+									<option>10002</option>
+									<option>10003</option>
+								</select></td></tr>
+								<tr><th>题目</th><td><input type="text" name="question" value=<?=$row['question'] ?>></td></tr>
+								<tr><th>A</th><td><input type="text" name="answer_a" value=<?= $row["answer_a"] ?>></td></tr>
+								<tr><th>B</th><td><input type="text" name="answer_b" value=<?= $row["answer_b"] ?>></td></tr>
+                                <tr><th>C</th><td><input type="text" name="answer_c" value=<?= $row["answer_c"] ?>></td></tr>
+                                <tr><th>D</th><td><input type="text" name="answer_d" value=<?= $row["answer_d"] ?>></td></tr>
+								<tr><th>答案</th><td>
+									<?php if ($row['answer']=='A'){
+									       echo  '<label><input type="radio"value="A" name="answer" checked  required>A</label>
+											<label><input type="radio"value="B" name="answer" required>B</label>
+                                            <label><input type="radio"value="C" name="answer" required>C</label>
+											<label><input type="radio"value="D" name="answer" required>D</label>';
+									}elseif($row['answer']=='B')
+									{
+										echo  '<label><input type="radio"value="A" name="answer"   required>A</label>
+                                        <label><input type="radio"value="B" name="answer"  checked required>B</label>
+										<label><input type="radio"value="C" name="answer" required>C</label>
+										<label><input type="radio"value="D" name="answer" required>D</label>';
+									}
+									elseif($row['answer']=='C')
+									{
+										echo  '<label><input type="radio"value="A" name="answer"   required>A</label>
+										<label><input type="radio"value="B" name="answer"  required>B</label>
+                                        <label><input type="radio"value="C" name="answer" checked required>C</label>
+										<label><input type="radio"value="D" name="answer" required>D</label>';
+									}
+                                    else{
+                                        echo  '<label><input type="radio"value="A" name="answer"   required>A</label>
+                                        <label><input type="radio"value="B" name="answer"  required>B</label>
+                                        <label><input type="radio"value="C" name="answer" required>C</label>
+                                        <label><input type="radio"value="D" name="answer"  checked required>D</label>';   
+                                    }
+									?>
+									<th></th><td><input type="submit" value=" 修改"></td>
+								</td></tr>
+							</table>
+						</form>
+					</div>
+				
+</body>
+</html>

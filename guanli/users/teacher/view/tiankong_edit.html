@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台用户管理</title>
+</head>
+<style type="text/css">
+	select{
+		height: 30px;
+		width: 176px;
+	}
+	 /* input{
+		height: 20px;
+		width: 175px;
+	} */
+	
+	 .tr{
+		height: 22px;
+		width: 176px;
+	 } 
+	     #shadow, #text{
+        /* font: 1200px/1600px; */
+        overflow: hidden ;
+        height:30px;
+		/* width: 176px; */
+        /* width: 100px; */
+
+    }
+    #shadow{
+         position: absolute;
+         border: 0px;
+         padding:0px;
+         visibility: hidden;
+    }
+    #text{
+        resize: none;
+    }
+	#shadow1, #text1{
+        /* font: 1200px/1600px; */
+        overflow: hidden ;
+        height:30px;
+		/* width: 176px; */
+        /* width: 100px; */
+
+    }
+    #shadow1{
+         position: absolute;
+         border: 0px;
+         padding:0px;
+         visibility: hidden;
+    }
+    #text1{
+        resize: none;
+    }
+</style>
+<body>
+
+					<div>
+						<form method="post" action="tiankong_update.php">
+							<table>
+								<tr><td><input type="hidden" name="id" value=<?=$row['id'] ?>></td></tr>
+								<tr><th>题目</th><td>
+                                <textarea id="text" type="text" name="question"><?=$row['question'] ?></textarea> 
+                                <textarea id="shadow"></textarea></td></tr>
+                                <tr><th>答案</th><td>
+                                <textarea id="text1" type="text" name="answer"><?=$row['answer'] ?></textarea> 
+                                <textarea id="shadow1"></textarea></td></tr>
+								<tr><th>题目编号:</th><td><select name="topic_id" id="" >
+									<option>10001</option>
+									<option>10002</option>
+									<option>10003</option>
+								</select></td></tr>
+                                <th></th><td><input type="submit" value=" 修改"></td>
+							</table>
+						</form>
+					</div>
+				</body>
+				<script type="text/javascript"> /* by VILIC VANE Web www.vilic.info Email i@vilic.info */ 
+					window.onload = function () { var text = document.getElementById("text"); 
+					/*用户看到的文本框 */ var shadow = document.getElementById("shadow");
+					/*隐藏的文本框*/ text.oninput = /*非IE的*/ text.onpropertychange = /*IE的*/ onchange; function onchange() { shadow.value = text.value; setHeight(); setTimeout(setHeight, 0); 
+					/*针对IE 6/7/8的延迟, 否则有时会有一个字符的出入*/ function setHeight() { text.style.height = shadow.scrollHeight + "px"; } } };
+				</script>
+					<script type="text/javascript"> 
+					window.onload = function () { var text = document.getElementById("text1"); 
+					/*用户看到的文本框 */ var shadow = document.getElementById("shadow1");
+					/*隐藏的文本框*/ text.oninput = /*非IE的*/ text.onpropertychange = /*IE的*/ onchange; function onchange() { shadow.value = text.value; setHeight(); setTimeout(setHeight, 0); 
+					/*针对IE 6/7/8的延迟, 否则有时会有一个字符的出入*/ function setHeight() { text.style.height = shadow.scrollHeight + "px"; } } }; 
+					</script>
+				</html>		

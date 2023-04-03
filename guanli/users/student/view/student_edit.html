@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信息管理</title>
+</head>
+
+<body>
+
+					<div>
+						<form method="post" action="student_update.php">
+							<table>
+								<tr><td><input type="hidden" name="id" value=<?=$row['id'] ?>></td></tr>
+								<tr><th>用户名：</th><td><input type="text" name="name" value=<?=$row['name'] ?>></td></tr>
+								<tr><th>密　码：</th><td><input type="password" name="password" value=<?=$row['password'] ?>></td></tr>
+								<tr><th> 手机号码：</th><td><input type="text" name="passno" value=<?= $row["passno"] ?>></td></tr>
+								<tr><th> 身份证号码：</th><td><input type="text" name="personcode" value=<?= $row["personcode"] ?>></td></tr>
+								</td></tr>
+								<tr><th>照　片：</th><td> <input type="file" name="photo" id="file" value=<?= $row["photo"] ?>></td></tr>
+									<th></th><td><input type="submit" value=" 修改"></td>
+									</tr>
+							</table>
+						</form>
+					</div>
+				
+</body>
+</html>

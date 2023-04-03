@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>在线考试系统</title>
+
+</head>
+<body>
+	<div class="main">
+			<form action="anwser.php"  method="post" id="testForm">
+			<!-- 判断题 -->
+			<div id="binary" class="anchor" ></div>
+			<div class="question-wrap">
+				<div class="question-type">一、判断题<span></span></div>
+				<?php 
+                foreach($row as $x=>$x_value)
+                  {         
+                
+                
+                ?>
+					<div class="question-each">
+						<!-- 标题 -->
+						<div class="question-name"><?=$x+1,'. ',$x_value['question']?></div>
+						<!-- 选项 -->
+						<div class="question-option">
+							<label><input type="radio" value="yes" name="binary[<?=$x+1?>]" required>对</label>
+							<label><input type="radio" value="no" name="binary[<?=$x+1?>]" required>错</label>
+						</div>
+					</div>
+				<?php 
+                
+    
+   
+        }
+                
+                ?>
+                
+			</div>
+            			<!-- 判断题 -->
+			<!-- 单选题 -->
+			<div id="single" class="anchor" ></div>
+			<div class="question-wrap">
+				<div class="question-type">二、单选题<span>（共题，每题分）</span></div>
+				<?php foreach($row2 as $k=>$v): ?>
+					<div class="question-each">
+						<!-- 标题 -->
+						<div class="question-name"><?=$k+1,'. ',$v['question']?></div>
+						<!-- 选项 -->
+						<div class="question-option">
+							<label><input type="radio" value="A" name="single[<?=$k?>]" required>A. <?=$v['answer_a']?></label>
+							<label><input type="radio" value="B" name="single[<?=$k?>]" required>B. <?=$v['answer_b']?></label>
+							<label><input type="radio" value="C" name="single[<?=$k?>]" required>C. <?=$v['answer_c']?></label>
+							<label><input type="radio" value="D" name="single[<?=$k?>]" required>D. <?=$v['answer_d']?></label>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div id="multiple" class="anchor" ></div>
+			<div class="question-wrap jq-multiple">
+				<div class="question-type">三、多选题<span>（共题，每题分）</span></div>
+				<?php foreach($row3 as $k=>$v): ?>
+					<div class="question-each">
+						<!-- 标题 -->
+						<div class="question-name"><?=$k+1,'. ',$v['question']?></div>
+						<!-- 选项 -->
+						<div class="question-option">
+							<label><input type="checkbox" value="A" name="multiple[<?=$k?>][]">A. <?=$v['answer_a']?></label>
+							<label><input type="checkbox" value="B" name="multiple[<?=$k?>][]">B. <?=$v['answer_b']?></label>
+							<label><input type="checkbox" value="C" name="multiple[<?=$k?>][]">C. <?=$v['answer_c']?></label>
+							<label><input type="checkbox" value="D" name="multiple[<?=$k?>][]">D. <?=$v['answer_d']?></label>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<!-- 填空题 -->
+			<div id="fill" class="anchor" ></div>
+			<div class="question-wrap">
+				<div class="question-type">四、填空题<span>（共题，每题分）</span></div>
+				<?php foreach($row4 as $k=>$v): ?>
+					<div class="question-each">
+						<!-- 标题 -->
+						<div class="question-name"><?=$k+1,'. ',$v['question']?></div>
+						<!-- 选项 -->
+						<div class="question-option">
+							<span>请输入答案：<input type="text" name="fill[<?=$k?>]" required></span>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+            <div class="question-act">
+				<input type="submit" value="交卷" >
+			</div>
+            </form>

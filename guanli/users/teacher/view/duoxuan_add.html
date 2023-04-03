@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>多选题</title>
+</head>
+<style>
+	select{
+		height: 22px;
+		width: 176px;
+	}
+	/* input{
+		height: 20px;
+		width: 175px;
+	}
+	 */
+
+
+</style>
+<body>
+    <div><h1>多选题出题</h1></div>
+	<div>
+		<form method="post" action="../duoxuan_add.php" enctype="multipart/form-data"> 
+			<!-- enctype="multipart/form-data" 
+			1、application/x-www-form-urlencoded。默认的编码方式。但是在用文本的传输和MP3等大型文件的时候，使用这种编码就显得 效率低下。 
+
+			2、multipart/form-data 。 指定传输数据为二进制类型，比如图片、mp3、文件。 
+			
+			3、text/plain。纯文体的传输。空格转换为 “+” 加号，但不对特殊字符编码。
+			 -->
+		<table>
+			<tr><th>题目：</th><td><input type="text" name="question" value="" ></td></tr>
+			<tr><th>题目编号:</th><td><select name="topic_id">
+				<option>10001</option>
+				<option>10002</option>
+				<option>10003</option>
+			</select></td></tr>
+            <tr><th>选项A：</th><td><input type="text" name="answer_a"></td></tr>	
+            <tr><th>选项B：</th><td><input type="text" name="answer_b"></td></tr>	
+            <tr><th>选项C：</th><td><input type="text" name="answer_c"></td></tr>	
+            <tr><th>选项D：</th><td><input type="text" name="answer_d"></td></tr>	
+			<tr><th>答案：</th>	<td>
+            <!-- 选项 -->
+						<!-- 选项 -->
+						<div class="question-option">
+							<label><input type="checkbox" value="A" name="answer[]">A</label>
+							<label><input type="checkbox" value="B" name="answer[]">B</label>
+							<label><input type="checkbox" value="C" name="answer[]">C</label>
+							<label><input type="checkbox" value="D" name="answer[]">D</label>
+						</div></td>
+                    </tr>
+			<!-- <tr><th>科目：</th><td><input type="text" name="topic"></td></tr> -->
+		<tr><th></th><td></td><td><input type="submit" value="添加"></td></tr>
+		</table>
+		</form>
+        </div>
+    </body>
+    </html>

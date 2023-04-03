@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>后台管理</title>
+</head>
+<body>
+	<div><h1>用户添加</h1></div>
+	<div>
+		<form method="post" action="../user_add.php" enctype="multipart/form-data"> 
+			<!-- enctype="multipart/form-data" 
+			1、application/x-www-form-urlencoded。默认的编码方式。但是在用文本的传输和MP3等大型文件的时候，使用这种编码就显得 效率低下。 
+
+			2、multipart/form-data 。 指定传输数据为二进制类型，比如图片、mp3、文件。 
+			
+			3、text/plain。纯文体的传输。空格转换为 “+” 加号，但不对特殊字符编码。
+			 -->
+		<table>
+			<tr><th>用户名：</th><td><input type="text" name="name" value=""></td></tr>
+			<tr><th>密　码：</th><td><input type="password" name="password"></td></tr>	
+			<tr><th>身份证：</th><td><input type="text" name="personcode"></td></tr>
+			<tr><th>手机号：</th><td><input type="text" name="passno"></td></tr>
+			<tr><th>身份是：</th><td>
+				<label><input type="radio"value="1" name="limits" required>考生</label>
+				<label><input type="radio"value="2" name="limits" required>管理员</label>
+				<label><input type="radio"value="3" name="limits" required>教师</label>
+	</td></tr>
+	<tr><th>照　片：</th><td> <input type="file" name="photo" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"></td></td></tr>
+	
+	<tr></tr>
+		<tr><th></th><td></td><td><input type="submit" value="添加"></td></tr>
+		</table>
+		</form>
+	</div>
+	<hr />
+	<div style="border:2px dashed red;">
+		<p>
+			上传图片预览：
+			<input type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
+			<input type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
+		</p>
+		<img id="xmTanImg"/>
+		<div id="xmTanDiv"></div>
+	</div>
+	<script type="text/javascript">            
+		//判断浏览器是否支持FileReader接口
+		if (typeof FileReader == 'undefined') {
+			document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+			//使选择控件不可操作
+			document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+		}
+	
+		//选择图片，马上预览
+		function xmTanUploadImg(obj) {
+			var file = obj.files[0];
+			
+			console.log(obj);console.log(file);
+			console.log("file.size = " + file.size);  //file.size 单位为byte
+	
+			var reader = new FileReader();
+	
+			//读取文件过程方法
+			reader.onloadstart = function (e) {
+				console.log("开始读取....");
+			}
+			reader.onprogress = function (e) {
+				console.log("正在读取中....");
+			}
+			reader.onabort = function (e) {
+				console.log("中断读取....");
+			}
+			reader.onerror = function (e) {
+				console.log("读取异常....");
+			}
+			reader.onload = function (e) {
+				console.log("成功读取....");
+	
+				var img = document.getElementById("xmTanImg");
+				img.src = e.target.result;
+				//或者 img.src = this.result;  //e.target == this
+			}
+	
+			reader.readAsDataURL(file)
+		}
+	</script>
+</body>
+</html>
